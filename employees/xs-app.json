@@ -9,6 +9,12 @@
       "destination": "ui5"
     },
     {
+        "source": "^/sap/opu/odata/sap/YSAPUI5_SRV_01/",
+        "csrfProtection": false,
+        "authenticationType": "none",
+        "destination": "erp_ABAP"
+      },
+    {
       "source": "^/test-resources/(.*)$",
       "target": "/test-resources/$1",
       "authenticationType": "none",
