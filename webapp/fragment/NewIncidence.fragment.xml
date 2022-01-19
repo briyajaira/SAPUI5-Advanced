@@ -12,6 +12,7 @@
                <core:Icon src="sap-icon://delete" press="onDeleteIncidence"/>
             </Toolbar>
         </headerToolbar>
+        
         <content>
             <HBox>
                 <VBox class="sapUiSmallMarginEnd">

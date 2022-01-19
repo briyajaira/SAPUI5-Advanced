@@ -68,4 +68,5 @@ sap.ui.define([
         EmployeeDetails.prototype.updateIncidenceType   = updateIncidenceType;
 
         return EmployeeDetails;
+        
     });

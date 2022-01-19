@@ -151,10 +151,9 @@ sap.ui.define([
                         }
                     }.bind(this),
                     error: function (e) {
-
+                        
                     }
                 });
             }
-
         });
     });
