@@ -12,7 +12,7 @@
         "source": "^/sap/opu/odata/sap/YSAPUI5_SRV_01/",
         "csrfProtection": false,
         "authenticationType": "none",
-        "destination": "erp_ABAP"
+        "destination": "logaligroupERP"
       },
     {
       "source": "^/test-resources/(.*)$",
