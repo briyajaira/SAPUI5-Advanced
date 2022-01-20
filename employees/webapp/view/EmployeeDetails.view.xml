@@ -71,5 +71,9 @@
       </Panel> 
     </Panel>
 
+    <Panel id="panelOrders"> 
+        <core:Fragment id="fragOrder" fragmentName="logaligroup.employees.fragment.TableOrders" type="XML" />
+    </Panel> 
+    
     </Page>
 </mvc:View>    
