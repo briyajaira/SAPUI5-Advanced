@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"
 ],
 
-    function (Controller) {
+    function (Controller, MessageBox) {
         return Controller.extend("logaligroup.employees.controller.Main", {
 
             onBeforeRendering: function () {
@@ -41,7 +42,7 @@ sap.ui.define([
                 this._bus.subscribe("flexible", "showEmployee", this.showEmployeeDetails, this);
                 this._bus.subscribe("incidence", "onSaveIncidence", this.onSaveODataIncidence, this);
 
-                this._bus.subscribe("incidence", "onDeleteIncidence", function(channelId, eventId, data) {
+                this._bus.subscribe("incidence", "onDeleteIncidence", function (channelId, eventId, data) {
 
                     var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 
@@ -92,7 +93,8 @@ sap.ui.define([
                     this.getView().getModel("incidenceModel").create("/IncidentsSet", body, {
                         success: function () {
                             this.onReadODataIncidence.bind(this)(employeeId);
-                            sap.m.MessageToast.show(oResourceBundle.getText("odataSaveOK"));
+                            MessageBox.success(oResourceBundle.getText("odataSaveOK"))
+                        //    sap.m.MessageToast.show(oResourceBundle.getText("odataSaveOK"));
                         }.bind(this),
                         error: function (e) {
                             sap.m.MessageToast.show(oResourceBundle.getText("odataSaveKO"));
@@ -144,6 +146,10 @@ sap.ui.define([
                         tableIncidence.removeAllContent();
 
                         for (var incidence in data.results) {
+
+                            data.results[incidence]._ValidateDate = true;
+                            data.results[incidence]._EnabledSave = false;
+
                             var newIncidence = sap.ui.xmlfragment("logaligroup.employees.fragment.NewIncidence", this._detailEmployeeView.getController());
                             this._detailEmployeeView.addDependent(newIncidence);
                             newIncidence.bindElement("incidenceModel>/" + incidence);
@@ -151,7 +157,7 @@ sap.ui.define([
                         }
                     }.bind(this),
                     error: function (e) {
-                        
+
                     }
                 });
             }
